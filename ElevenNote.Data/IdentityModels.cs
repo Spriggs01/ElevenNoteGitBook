@@ -5,7 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using static IdentityUserLoginConfiguration;
+using static ElevenNote.Data.IdentityUserLoginConfiguration;
+
 
 namespace ElevenNote.Data
 {
@@ -44,15 +45,14 @@ namespace ElevenNote.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
         }
-        
-          
-        }
+
+
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(IdentityUserLogin => IdentityUserLogin.UserId);
+            HasKey(iul => iul.UserId);
         }
         public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
         {
@@ -62,3 +62,4 @@ namespace ElevenNote.Data
             }
         }
     }
+}
